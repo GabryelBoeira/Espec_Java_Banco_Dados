@@ -18,6 +18,7 @@ import com.jolbox.bonecp.BoneCPDataSource;
 @Configuration
 @EnableJpaRepositories("com.br.espec.utfpr.atividade06.repository")
 @EnableTransactionManagement
+
 public class SpringDataConfig {
 
 	@Bean
@@ -25,10 +26,10 @@ public class SpringDataConfig {
 
 		BoneCPDataSource ds = new BoneCPDataSource();
 
+		ds.setDriverClass("com.mysql.cj.jdbc.Driver");
 		ds.setUser("root");
 		ds.setPassword("root");
-		ds.setJdbcUrl("jdbc:mysql://localhost/curso-spring-db");
-		ds.setDriverClass("com.mysql.jdbc.Driver");
+		ds.setJdbcUrl("jdbc:mysql://localhost/curso_spring_db");
 		return ds;
 	}
 
@@ -38,9 +39,10 @@ public class SpringDataConfig {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		vendorAdapter.setGenerateDdl(false);
+		vendorAdapter.setGenerateDdl(true);
+		
 		vendorAdapter.setShowSql(true);
-
+		
 		factory.setDataSource(dataSource());
 		factory.setJpaVendorAdapter(vendorAdapter);
 		factory.setPackagesToScan("com.br.espec.utfpr.atividade06.model");
@@ -58,4 +60,7 @@ public class SpringDataConfig {
 
 		return manager;
 	}
+	
+
+	
 }
