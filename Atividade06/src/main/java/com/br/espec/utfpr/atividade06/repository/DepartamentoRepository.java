@@ -8,4 +8,5 @@ import com.br.espec.utfpr.atividade06.model.Departamento;
 @Repository
 public interface  DepartamentoRepository extends JpaRepository<Departamento, Long> {
 
+    Departamento findFirstBy();
 }

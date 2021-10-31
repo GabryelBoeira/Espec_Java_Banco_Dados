@@ -24,3 +24,6 @@ tmp/**/*
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+
+#Intellij
+.idea

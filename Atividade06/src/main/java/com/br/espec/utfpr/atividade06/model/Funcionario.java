@@ -1,21 +1,25 @@
 package com.br.espec.utfpr.atividade06.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
-@Table(name = "Funcionario")
+@Table(name = "Funcionarios")
+@NamedQuery(
+		name = "Funcionario.byQtdeDependentes_NamedQuery",
+		query = "from Funcionario where qtdeDependentes = ?1")
+@NamedNativeQuery(
+		name = "Funcionario.byContainsNome_NamedNativeQuery",
+		query = "select * from Funcionarios f where f.nome_func LIKE CONCAT('%',:nome,'%')",
+		resultClass = Funcionario.class)
 public class Funcionario extends AbstractPersistable<Long> {
 	
-	public Funcionario() {}
-		
-	
+	public Funcionario() {
+		this.salario = 0D;
+		this.qtdeDependentes = 0;
+	}
+
 	public Funcionario(String codigo, String nome, String cargo, Integer qtdeDependentes, Double salario,
 			Departamento departamento) {
 		this.codigo = codigo;
@@ -42,7 +46,7 @@ public class Funcionario extends AbstractPersistable<Long> {
 	private Double salario;
 
 	@ManyToOne(targetEntity = Departamento.class, optional = false)
-	@JoinColumn(name="departamento_id", nullable=false)
+	@JoinColumn(name="departamento_id", nullable = false)
 	private Departamento departamento;
 
 	@Override

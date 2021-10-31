@@ -6,11 +6,9 @@ import com.br.espec.utfpr.atividade06.model.Funcionario;
 
 public interface FuncionarioService {
 	
-	List<Funcionario> findAll();
-	
 	Funcionario procurarFuncionarioPorNomeEQtdeDependentes(String nomeFunc, int qtdeDependentes);
 	
-	List<Funcionario> procurarFuncionariosPorDepardamento(Long codDepartamento);
+	List<Funcionario> procurarFuncionariosPorDepardamento(Long departamentoId);
 		
 	Funcionario procurarFuncionarioComMaiorSalario();
 	
@@ -18,8 +16,12 @@ public interface FuncionarioService {
 	
 	List<Funcionario> procurarFuncionariosSemDependentes();
 	
-	List<Funcionario> procurarFuncionariosComSalarioMaiorQueWordKey(Double salarioBase);
+	List<Funcionario> procurarFuncionariosComSalarioMaiorQueQuery(Double salarioBase);
 	
 	List<Funcionario> procurarFuncionariosComSalarioMaiorQueNativeQuery(Double salarioBase);
+
+	List<Funcionario> procurarFuncionariosPorQtdeDependentes(Integer qtde);
+
+	List<Funcionario> procurarFuncionariosPorNome(String nome);
 
 }

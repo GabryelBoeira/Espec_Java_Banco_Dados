@@ -22,12 +22,6 @@ public class DepartamentoServiceImpl implements DepartamentoService{
 	@Override
 	public Departamento procurarPrimeiroDepartamentoCadastrado() {
 		
-		return departamentoRepository.findAll().get(0);
+		return departamentoRepository.findFirstBy();
 	}
-
-	@Override
-	public List<Departamento> findAll() {
-		return departamentoRepository.findAll();
-	}
-
 }

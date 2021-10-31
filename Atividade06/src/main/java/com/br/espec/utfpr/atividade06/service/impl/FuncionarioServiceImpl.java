@@ -17,8 +17,8 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	
 	@Override
 	public Funcionario procurarFuncionarioPorNomeEQtdeDependentes(String nomeFunc, int qtdeDependentes) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return funcionarioRepository.findByNomeAndQtdeDependentes(nomeFunc, qtdeDependentes);
 	}
 
 	@Override
@@ -29,39 +29,42 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
 	@Override
 	public Funcionario procurarFuncionarioComMaiorSalario() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return funcionarioRepository.findTopByOrderBySalarioDesc();
 	}
 
 	@Override
 	public List<Funcionario> procurarTop3FuncionariosComMaiorSalario() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return funcionarioRepository.findTop3ByOrderBySalarioDesc();
 	}
 
 	@Override
 	public List<Funcionario> procurarFuncionariosSemDependentes() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return funcionarioRepository.findAllByFuncionariosSemDependentes();
 	}
 
 	@Override
-	public List<Funcionario> procurarFuncionariosComSalarioMaiorQueWordKey(Double salarioBase) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Funcionario> procurarFuncionariosComSalarioMaiorQueQuery(Double salarioBase) {
+
+		return funcionarioRepository.findAllByFuncionariosComSalarioMaiorQueByQuery(salarioBase);
 	}
 
 	@Override
 	public List<Funcionario> procurarFuncionariosComSalarioMaiorQueNativeQuery(Double salarioBase) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return funcionarioRepository.findAllByFuncionariosComSalarioMaiorQueByNativeQuery(salarioBase);
 	}
 
 	@Override
-	public List<Funcionario> findAll() {
-		
-		return funcionarioRepository.findAll();
+	public List<Funcionario> procurarFuncionariosPorQtdeDependentes(Integer qtde) {
+		return funcionarioRepository.findAllFuncionariosByQtdeDependentes(qtde);
 	}
 
-	
+	@Override
+	public List<Funcionario> procurarFuncionariosPorNome(String nome) {
+		return funcionarioRepository.findAllFuncionariosByNomeContains(nome);
+	}
+
 }

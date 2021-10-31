@@ -18,7 +18,6 @@ import com.jolbox.bonecp.BoneCPDataSource;
 @Configuration
 @EnableJpaRepositories("com.br.espec.utfpr.atividade06.repository")
 @EnableTransactionManagement
-
 public class SpringDataConfig {
 
 	@Bean
@@ -40,7 +39,6 @@ public class SpringDataConfig {
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setGenerateDdl(true);
-		
 		vendorAdapter.setShowSql(true);
 		
 		factory.setDataSource(dataSource());
