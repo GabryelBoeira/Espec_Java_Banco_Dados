@@ -83,11 +83,18 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 		return funcionarioRepository.findAllFuncionariosPorDepartamentoSemDependentes(deparId);
 	}
 
-	@Transactional
 	@Override
+	@Transactional
 	public Integer migrarFuncionariosDeDepartamento(Departamento newDepartamento, Long oldDepartamento) {
 		
 		return funcionarioRepository.updateDepartamentoFuncionario(newDepartamento.getId(), oldDepartamento);
+	}
+
+	@Override
+	@Transactional
+	public Integer deletarFuncionariosPorDepartamentoId(Long departamentoId) {
+	
+		return funcionarioRepository.deleteAllfuncionariosByDepartamentoId(departamentoId);
 	}
 
 }

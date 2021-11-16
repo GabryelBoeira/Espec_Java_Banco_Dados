@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.br.espec.utfpr.atividade07.model.Departamento;
 import com.br.espec.utfpr.atividade07.model.Funcionario;
 
 @Repository
@@ -38,8 +37,8 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 	List<Funcionario> findAllFuncionariosByQtdeDependentes(Integer qtde);
 
 	@Query(name = "Funcionario.byContainsNome_NamedNativeQuery")
-	
 	List<Funcionario> findAllFuncionariosByNomeContains(@Param("nome") String nome);
+	
 	// Atividade 07
 	@Procedure(procedureName = "procedure_aumentar_salario", outputParameterName = "res")
 	Integer procedureAumentarSalarioFuncionarios(Integer arg1);
@@ -48,13 +47,11 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 	List<Funcionario> findAllFuncionariosPorDepartamentoSemDependentes(@Param("deparId") long departamentoId);
 	
 	@Modifying
-	@Query(value = "UPDATE funcionarios as f SET f.newDepar = ?1 where f.departamento_id = :oldDepar", nativeQuery = true )
-	Integer updateDepartamentoFuncionario(@Param("newDepar") Long newDepartamento, @Param("oldDepar") Long oldDepartamento);
+	@Query(value = "UPDATE Funcionarios as f SET f.departamento_id = :newDepar WHERE f.departamento_id = :oldDepar", nativeQuery = true )
+	Integer updateDepartamentoFuncionario(@Param("newDepar") Long newDepartamentoId, @Param("oldDepar") Long oldDepartamentoId);
 	
-//	@Modifying 
-//	@Query("delete from Endereco e where e.id =  ?1")
-//	int deleteEndereco(Long id);
-//	
+	@Modifying 
+	@Query("DELETE FROM Funcionario f WHERE f.departamento.id = :deparId")
+	Integer deleteAllfuncionariosByDepartamentoId(@Param("deparId") Long departamentoId);
 	
-
 }

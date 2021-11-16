@@ -31,5 +31,7 @@ public interface FuncionarioService {
 	List<Funcionario> buscarTodosFuncionariosPorDepartamentoSemDependentes(Long deparId);
 	
 	Integer migrarFuncionariosDeDepartamento(Departamento newDepartamento, Long oldDepartamento);
+	
+	Integer deletarFuncionariosPorDepartamentoId(Long departamentoId);
 
 }

@@ -149,13 +149,13 @@ public class Atividade07Application {
 			
 			log.info("13 - Uma instrução de update que troca todos os funcionários de um determinado departamento para outro departamento utilizando a anotação @Modifying");
 			log.info("---------------------------------------------------------------------------");
-			log.info("Fucionarios com  os departamentos alterados:" + funcionarioService.migrarFuncionariosDeDepartamento( departamentoService.procurarDepartamentoPorCodigo(1561), departamentoService.procurarPrimeiroDepartamentoCadastrado().getId()));		
+			log.info("Total de fucionarios com  os departamentos alterados: " + funcionarioService.migrarFuncionariosDeDepartamento( departamentoService.procurarDepartamentoPorCodigo(1561), departamentoService.procurarPrimeiroDepartamentoCadastrado().getId()));		
 			log.info("===========================================================================");
 			log.info("");
 			
 			log.info("14 - Uma instrução de delete que exclui todos os funcionários de um determinado departamento utilizando a anotação @Modifying");
 			log.info("---------------------------------------------------------------------------");
-			log.info("");		
+			log.info("Total de fucionarios removidos por departamento: " + funcionarioService.deletarFuncionariosPorDepartamentoId(departamentoService.procurarDepartamentoPorCodigo(1561).getId()));			
 			log.info("===========================================================================");
 			log.info("");
 
