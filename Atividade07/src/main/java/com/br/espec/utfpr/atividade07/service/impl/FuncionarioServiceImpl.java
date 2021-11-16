@@ -1,11 +1,13 @@
 package com.br.espec.utfpr.atividade07.service.impl;
 
 import java.util.List;
-import java.util.Map;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.br.espec.utfpr.atividade07.model.Departamento;
 import com.br.espec.utfpr.atividade07.model.Funcionario;
 import com.br.espec.utfpr.atividade07.repository.FuncionarioRepository;
 import com.br.espec.utfpr.atividade07.service.FuncionarioService;
@@ -67,11 +69,25 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	public List<Funcionario> procurarFuncionariosPorNome(String nome) {
 		return funcionarioRepository.findAllFuncionariosByNomeContains(nome);
 	}
-
+	
+	//Atividade 07
 	@Override
 	public Integer aumentarTodosSalariosPorPercentual(Integer percentual) {		
 		
 		return funcionarioRepository.procedureAumentarSalarioFuncionarios(percentual);
+	}
+
+	@Override
+	public List<Funcionario> buscarTodosFuncionariosPorDepartamentoSemDependentes(Long deparId) {
+		
+		return funcionarioRepository.findAllFuncionariosPorDepartamentoSemDependentes(deparId);
+	}
+
+	@Transactional
+	@Override
+	public Integer migrarFuncionariosDeDepartamento(Departamento newDepartamento, Long oldDepartamento) {
+		
+		return funcionarioRepository.updateDepartamentoFuncionario(newDepartamento.getId(), oldDepartamento);
 	}
 
 }

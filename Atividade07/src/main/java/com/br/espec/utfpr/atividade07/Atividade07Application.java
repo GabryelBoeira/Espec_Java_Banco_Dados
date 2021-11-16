@@ -129,6 +129,8 @@ public class Atividade07Application {
 			log.info("===========================================================================");
 			log.info("");
 			
+			//Atividade 07
+			
 			log.info("11 - Uma procedure que aumenta o salário de todos os funcionários em X porcento, onde X é um número inteiro");
 			log.info("---------------------------------------------------------------------------");
 			log.info("Total de funcionarios que tiveram aumento : " + funcionarioService.aumentarTodosSalariosPorPercentual(10));
@@ -137,13 +139,17 @@ public class Atividade07Application {
 			
 			log.info("12 - Uma consulta que lista todos os funcionários de um determinado departamento que não possuam dependentes utilizando parâmetros nomeados");
 			log.info("---------------------------------------------------------------------------");
-			log.info("");		
+			log.info("");
+			for(Funcionario func : funcionarioService.buscarTodosFuncionariosPorDepartamentoSemDependentes(departamentoService.procurarPrimeiroDepartamentoCadastrado().getId())) {
+				log.info("");
+				log.info(func.toString());
+			};						
 			log.info("===========================================================================");
 			log.info("");
 			
 			log.info("13 - Uma instrução de update que troca todos os funcionários de um determinado departamento para outro departamento utilizando a anotação @Modifying");
 			log.info("---------------------------------------------------------------------------");
-			log.info("");		
+			log.info("Fucionarios com  os departamentos alterados:" + funcionarioService.migrarFuncionariosDeDepartamento( departamentoService.procurarDepartamentoPorCodigo(1561), departamentoService.procurarPrimeiroDepartamentoCadastrado().getId()));		
 			log.info("===========================================================================");
 			log.info("");
 			
@@ -168,6 +174,7 @@ public class Atividade07Application {
 		Departamento dep3 = departamentoRepository.save(new Departamento("Vendas", 58));
 		Departamento dep4 = departamentoRepository.save(new Departamento("Compras", 562));
 		Departamento dep5 = departamentoRepository.save(new Departamento("Suporte ao Cliente", 426));
+		departamentoRepository.save(new Departamento("RH - Human Resources", 1561));
 		
 		funcionarioRepository.save(new Funcionario("152215", "Jose da Silva", "Gerente de RH",  2, 3700D, dep1));
 		funcionarioRepository.save(new Funcionario("255544", "Andre da Silva","Assistente de RH", 1, 1700D, dep1));

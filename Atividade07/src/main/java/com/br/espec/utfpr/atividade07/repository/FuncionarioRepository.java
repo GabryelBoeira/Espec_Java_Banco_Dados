@@ -1,15 +1,15 @@
 package com.br.espec.utfpr.atividade07.repository;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.br.espec.utfpr.atividade07.model.Departamento;
 import com.br.espec.utfpr.atividade07.model.Funcionario;
 
 @Repository
@@ -38,19 +38,19 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 	List<Funcionario> findAllFuncionariosByQtdeDependentes(Integer qtde);
 
 	@Query(name = "Funcionario.byContainsNome_NamedNativeQuery")
+	
 	List<Funcionario> findAllFuncionariosByNomeContains(@Param("nome") String nome);
-	
-	
 	// Atividade 07
 	@Procedure(procedureName = "procedure_aumentar_salario", outputParameterName = "res")
 	Integer procedureAumentarSalarioFuncionarios(Integer arg1);
 	
+	@Query("from Funcionario where departamento.id = :deparId and qtdeDependentes = 0")
+	List<Funcionario> findAllFuncionariosPorDepartamentoSemDependentes(@Param("deparId") long departamentoId);
 	
-//	
-//	@Modifying
-//	@Query("update Endereco e set e.cidade = ?1 where e.id = ?2")
-//	int updateDepartamentoFuncionario(Long departamentoId);
-//	
+	@Modifying
+	@Query(value = "UPDATE funcionarios as f SET f.newDepar = ?1 where f.departamento_id = :oldDepar", nativeQuery = true )
+	Integer updateDepartamentoFuncionario(@Param("newDepar") Long newDepartamento, @Param("oldDepar") Long oldDepartamento);
+	
 //	@Modifying 
 //	@Query("delete from Endereco e where e.id =  ?1")
 //	int deleteEndereco(Long id);

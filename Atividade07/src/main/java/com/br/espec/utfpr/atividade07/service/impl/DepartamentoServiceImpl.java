@@ -16,10 +16,15 @@ public class DepartamentoServiceImpl implements DepartamentoService{
 		this.departamentoRepository = departamentoRepository;
 	}
 	
-	
 	@Override
 	public Departamento procurarPrimeiroDepartamentoCadastrado() {
 		
 		return departamentoRepository.findFirstBy();
+	}
+
+	@Override
+	public Departamento procurarDepartamentoPorCodigo(Integer codigo) {
+		
+		return departamentoRepository.findAllByCodigoDepardamento(codigo).orElse(null);
 	}
 }
