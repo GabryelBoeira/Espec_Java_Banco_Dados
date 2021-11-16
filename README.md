@@ -7,5 +7,7 @@ Revisão de conteúdos, utilização do MariaDB como banco de dados das atividad
 ### Conteúdo:
 
 - [Atividade 05](https://github.com/GabryelBoeira/Espec_Java_Banco_Dados/tree/main/Atividade05) : Configurando do Spring JPA, configuração via arquivo do hibernate e a conexão com banco de dados, a camada de entidade, camada de repositorio da aplicação.
-  
+
 - [Atividade 06](https://github.com/GabryelBoeira/Espec_Java_Banco_Dados/tree/main/Atividade06) : Utilização do JPA na camada de repositorio do aplicação, utilização de diferentes formas para a realização das consultas na camada de serviço.
+
+- [Atividade 07](https://github.com/GabryelBoeira/Espec_Java_Banco_Dados/tree/main/Atividade07) : Utilização do JPA na camada de repositorio do aplicação, utilização de @Procedure, @Modifying, @Param implementação de consultas a procedures já existentes no banco de dados, update e delete com @Query
