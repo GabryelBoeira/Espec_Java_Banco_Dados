@@ -1,6 +1,5 @@
 package com.br.espec.utfpr.atividade08.model;
 
-
 import javax.persistence.*;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -9,22 +8,10 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Table(name = "Funcionarios")
 @NamedQuery(name = "Funcionario.byQtdeDependentes_NamedQuery", query = "from Funcionario where qtdeDependentes = ?1")
 @NamedNativeQuery(name = "Funcionario.byContainsNome_NamedNativeQuery", query = "select * from Funcionarios f where f.nome_func LIKE CONCAT('%',:nome,'%')", resultClass = Funcionario.class)
-@NamedStoredProcedureQuery(
-	name = "Funcionario.aumentar_salario", 
-	procedureName = "procedure_aumentar_salario",
-	resultClasses = { Integer.class },
-	parameters = {
-			@StoredProcedureParameter(
-					mode = ParameterMode.IN,
-					name = "arg1",
-					type = Integer.class
-				),
-			@StoredProcedureParameter(
-					mode = ParameterMode.OUT,
-					name = "res",				
-					type = Integer.class ) 
-			}
-	)
+@NamedStoredProcedureQuery(name = "Funcionario.aumentar_salario", procedureName = "procedure_aumentar_salario", resultClasses = {
+		Integer.class }, parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "arg1", type = Integer.class),
+				@StoredProcedureParameter(mode = ParameterMode.OUT, name = "res", type = Integer.class) })
 public class Funcionario extends AbstractPersistable<Long> {
 
 	public Funcionario() {
@@ -118,8 +105,8 @@ public class Funcionario extends AbstractPersistable<Long> {
 	@Override
 	public String toString() {
 		return String.format(
-				"Funcionario [codigo=%s, nome=%s, cargo=%s, qtdeDependentes=%s, salario=%s, departamento=%s]", codigo,
-				nome, cargo, qtdeDependentes, salario, departamento);
+				"Funcionario [idFuncionario=%s, codigo=%s, nome=%s, cargo=%s, qtdeDependentes=%s, salario=%s, departamento=%s]",
+				super.getId(), codigo, nome, cargo, qtdeDependentes, salario, departamento);
 	}
 
 }

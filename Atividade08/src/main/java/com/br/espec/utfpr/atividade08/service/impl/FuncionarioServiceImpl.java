@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.br.espec.utfpr.atividade08.model.Departamento;
 import com.br.espec.utfpr.atividade08.model.Funcionario;
 import com.br.espec.utfpr.atividade08.repository.FuncionarioRepository;
+import com.br.espec.utfpr.atividade08.service.DepartamentoService;
 import com.br.espec.utfpr.atividade08.service.FuncionarioService;
 
 @Service
@@ -17,6 +18,9 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
+	
+	@Autowired
+	private DepartamentoService departamentoService;
 	
 	@Override
 	public Funcionario procurarFuncionarioPorNomeEQtdeDependentes(String nomeFunc, int qtdeDependentes) {
@@ -95,6 +99,17 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	public Integer deletarFuncionariosPorDepartamentoId(Long departamentoId) {
 	
 		return funcionarioRepository.deleteAllfuncionariosByDepartamentoId(departamentoId);
+	}
+
+	@Override
+	@Transactional
+	public Funcionario criarFuncionarioComNovoDepartamento(Funcionario funcionario, Departamento departamento) {
+		
+		Departamento departamentoSalvo = departamentoService.salvarDepartamento(departamento);
+		
+		funcionario.setDepartamento(departamentoSalvo);
+		
+		return funcionarioRepository.save(funcionario);
 	}
 
 }

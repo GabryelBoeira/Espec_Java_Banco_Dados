@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.br.espec.utfpr.atividade08</groupId>
-	<artifactId>Atividade07</artifactId>
+	<artifactId>Atividade08</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Atividade08</name>
 	<description>Atividade para utilização do Spring Data JPA </description>

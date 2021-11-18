@@ -34,6 +34,8 @@ public interface FuncionarioService {
 	
 	Integer deletarFuncionariosPorDepartamentoId(Long departamentoId);
 	
-	//Atividade 08
-
+	//Atividade 08	
+	
+	Funcionario criarFuncionarioComNovoDepartamento(Funcionario funcionario, Departamento departamento);
+	
 }

@@ -27,4 +27,11 @@ public class DepartamentoServiceImpl implements DepartamentoService{
 		
 		return departamentoRepository.findAllByCodigoDepardamento(codigo).orElse(null);
 	}
+	
+	//Atividade 08
+	@Override
+	public Departamento salvarDepartamento(Departamento departamento) {
+
+		return departamentoRepository.save(departamento);
+	}
 }

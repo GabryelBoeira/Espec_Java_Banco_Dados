@@ -10,5 +10,5 @@ public interface DepartamentoService {
 	Departamento procurarDepartamentoPorCodigo(Integer codigo);
 	
 	//Atividade 08
-	
+    Departamento salvarDepartamento(Departamento departamento);
 }

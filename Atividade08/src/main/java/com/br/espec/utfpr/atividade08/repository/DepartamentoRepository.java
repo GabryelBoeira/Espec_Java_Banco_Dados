@@ -13,4 +13,7 @@ public interface  DepartamentoRepository extends JpaRepository<Departamento, Lon
     Departamento findFirstBy();
     
     Optional<Departamento> findAllByCodigoDepardamento(Integer codigo);
+    
+    
+    
 }

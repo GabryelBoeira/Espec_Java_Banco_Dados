@@ -160,6 +160,11 @@ public class Atividade08Application {
 			log.info("");
 
 			//Atividade 08
+			log.info("15 - Criar um método na classe de serviço de departamento para salvar um departamento, associar esse departamento a um funcionário e salvar esse funcionário em um mesmo controle de transação");
+			log.info("---------------------------------------------------------------------------");
+			log.info("Funcionario e departamento criados com a mesma transação : " + funcionarioService.criarFuncionarioComNovoDepartamento(new Funcionario("568562", "Jose da Moca", "Diretor Geral",  2, 53700D, new Departamento()), new Departamento("Diretoria", 412)).toString());			
+			log.info("===========================================================================");
+			log.info("");
 			
 			
 			SpringApplication.exit(appContext, () -> 0);
