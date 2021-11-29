@@ -13,3 +13,5 @@ Revisão de conteúdos, utilização do MariaDB como banco de dados das atividad
 - [Atividade 07](https://github.com/GabryelBoeira/Espec_Java_Banco_Dados/tree/main/Atividade07) : Utilização do JPA na camada de repositorio do aplicação, utilização de @Procedure, @Modifying, @Param implementação de consultas a procedures já existentes no banco de dados, update e delete com @Query
 
 - [Atividade 08](https://github.com/GabryelBoeira/Espec_Java_Banco_Dados/tree/main/Atividade08) : Lidando com Transações, utilização do controle de transações com @EnableTransactionManagement para para habilitar o controle transaciona. Utilização do @Transactional na assinatura do metodo para criar cada configuração restrita ao método anotado.
+
+- [Simulado Prova](https://github.com/GabryelBoeira/Espec_Java_Banco_Dados/tree/main/SimuladoProva) : Utilizando todos os conceitos estudados nas aulas anteriores compactado em um único projeto
