@@ -1,5 +1,7 @@
 package com.br.espec.utfpr.simuladoProva.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -36,5 +38,17 @@ public class CantorServiceImpl implements CantorService {
 
 			return Boolean.FALSE;
 		}
+	}
+
+	@Override
+	public List<Cantor> listarTodosCadastros() {
+		
+		return cantorRepository.findAll();
+	}
+
+	@Override
+	public List<Cantor> listarTodosCadastrosPorPais(String pais) {
+		
+		return cantorRepository.findAllByPaisEquals(pais);
 	}
 }

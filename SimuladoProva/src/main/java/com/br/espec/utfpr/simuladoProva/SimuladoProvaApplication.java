@@ -26,6 +26,9 @@ public class SimuladoProvaApplication {
 	public CommandLineRunner AtividadeApplicationTeste() {
 
 		return (arg) -> {
+			LOG.info("============================================================");
+			LOG.info("=             Simulado prova banco de dados                =");
+			LOG.info("============================================================");
 
 			SpringApplication.exit(appContext, () -> 0);
 		};

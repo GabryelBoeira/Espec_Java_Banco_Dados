@@ -1,5 +1,7 @@
 package com.br.espec.utfpr.simuladoProva.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.br.espec.utfpr.simuladoProva.model.Pessoa;
@@ -34,4 +36,15 @@ public class PessoaServiceImpl implements PessoaService {
 		}
 	}
 
+	@Override
+	public Pessoa procurarPorNome(String nome) {
+		
+		return pessoaRepository.findByNomeEquals(nome).orElse(null);
+	}
+
+	@Override
+	public List<Pessoa> listarTodosCadastros() {
+
+		return pessoaRepository.findAll();
+	}
 }

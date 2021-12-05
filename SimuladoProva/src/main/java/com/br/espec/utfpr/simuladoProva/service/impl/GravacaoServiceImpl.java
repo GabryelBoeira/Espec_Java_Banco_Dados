@@ -1,32 +1,34 @@
 package com.br.espec.utfpr.simuladoProva.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
 import com.br.espec.utfpr.simuladoProva.model.Gravacao;
-import com.br.espec.utfpr.simuladoProva.repository.CantorRepository;
 import com.br.espec.utfpr.simuladoProva.repository.GravacaoRepository;
-import com.br.espec.utfpr.simuladoProva.repository.GravadoraRepository;
-import com.br.espec.utfpr.simuladoProva.repository.MusicaRepository;
+import com.br.espec.utfpr.simuladoProva.service.CantorService;
 import com.br.espec.utfpr.simuladoProva.service.GravacaoService;
+import com.br.espec.utfpr.simuladoProva.service.GravadoraService;
+import com.br.espec.utfpr.simuladoProva.service.MusicaService;
 
 @Service
 public class GravacaoServiceImpl implements GravacaoService {
 
 	private GravacaoRepository gravacaoRepository;
 	
-	private CantorRepository cantorRepository;
+	private CantorService cantorService;
 	
-	private GravadoraRepository gravadoraRepository;
+	private GravadoraService gravadoraService;
 
-	private MusicaRepository musicaRepository;
+	private MusicaService musicaService;
 	
-	public GravacaoServiceImpl(GravadoraRepository gravadoraRepository, GravacaoRepository gravacaoRepository, CantorRepository cantorRepository, MusicaRepository musicaRepository) {
+	public GravacaoServiceImpl(GravadoraService gravadoraService, GravacaoRepository gravacaoRepository, CantorService cantorService, MusicaService musicaService) {
 
-		this.musicaRepository = musicaRepository;
-		this.gravadoraRepository = gravadoraRepository;
-		this.cantorRepository = cantorRepository;
+		this.musicaService = musicaService;
+		this.gravadoraService = gravadoraService;
+		this.cantorService = cantorService;
 		this.gravacaoRepository = gravacaoRepository;
 	}
 
@@ -36,21 +38,20 @@ public class GravacaoServiceImpl implements GravacaoService {
 
 		if (gravacao.getCantor().getId() == null) {
 
-			gravacao.setCantor(cantorRepository.save(gravacao.getCantor()));
+			gravacao.setCantor(cantorService.salvarCantor(gravacao.getCantor()));
 		} 
 		
 		if (gravacao.getGravadora().getId() == null) {
 
-			gravacao.setGravadora(gravadoraRepository.save(gravacao.getGravadora()));
+			gravacao.setGravadora(gravadoraService.salvarGravadora(gravacao.getGravadora()));
 		} 
 		
 		if (gravacao.getMusica().getId() == null) {
 
-			gravacao.setMusica(musicaRepository.save(gravacao.getMusica()));
+			gravacao.setMusica(musicaService.salvarMusica(gravacao.getMusica()));
 		} 
 
 		return gravacaoRepository.save(gravacao);
-
 	}
 
 	@Override
@@ -64,6 +65,18 @@ public class GravacaoServiceImpl implements GravacaoService {
 
 			return Boolean.FALSE;
 		}
+	}
+
+	@Override
+	public List<Gravacao> listarTodosCadastros() {
+		
+		return gravacaoRepository.findAll();
+	}
+
+	@Override
+	public Gravacao procurarGravacaoPorId(Long idGravacao) {
+		
+		return gravacaoRepository.findById(idGravacao).orElse(null);
 	}
 
 }

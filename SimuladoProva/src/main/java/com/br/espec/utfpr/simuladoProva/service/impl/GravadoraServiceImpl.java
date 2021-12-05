@@ -1,5 +1,7 @@
 package com.br.espec.utfpr.simuladoProva.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -35,5 +37,17 @@ public class GravadoraServiceImpl implements GravadoraService {
 			
 			return Boolean.FALSE;
 		}
+	}
+
+	@Override
+	public List<Gravadora> listarTodosCadastros() {
+		
+		return gravadoraRepository.findAll();
+	}
+
+	@Override
+	public List<Gravadora> listarTodosCadastrosPorPais(String pais) {
+		
+		return gravadoraRepository.findAllByPaisLike(pais);
 	}
 }

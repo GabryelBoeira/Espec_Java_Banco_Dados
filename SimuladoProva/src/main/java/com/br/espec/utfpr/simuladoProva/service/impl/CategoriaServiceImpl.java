@@ -1,5 +1,7 @@
 package com.br.espec.utfpr.simuladoProva.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -36,6 +38,18 @@ public class CategoriaServiceImpl implements CategoriaService {
 
 			return Boolean.FALSE;
 		}
+	}
+
+	@Override
+	public List<Categoria> listarTodosCadastros() {
+
+		return categoriaRepository.findAll();
+	}
+
+	@Override
+	public List<Categoria> procurarPorMusica(String descricao) {
+		
+		return categoriaRepository.findAllByDescCategoriaLike(descricao);
 	}
 
 }
