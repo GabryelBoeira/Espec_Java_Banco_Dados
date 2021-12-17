@@ -27,3 +27,5 @@ tmp/**/*
 
 #Intellij
 .idea
+/ProvaBD/ProvaBD.iml
+/Atividade05/Atividade05.iml
