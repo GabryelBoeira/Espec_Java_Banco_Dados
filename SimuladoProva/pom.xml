@@ -9,10 +9,10 @@
 		<relativePath />
 	</parent>
 
-	<groupId>com.br.espec.utfpr.atividade08</groupId>
-	<artifactId>Atividade08</artifactId>
+	<groupId>com.br.espec.utfpr.simuladoProva</groupId>
+	<artifactId>SimuladoProva</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Atividade08</name>
+	<name>SimuladoProva</name>
 	<description>Atividade para utilização do Spring Data JPA </description>
 
 	<properties>

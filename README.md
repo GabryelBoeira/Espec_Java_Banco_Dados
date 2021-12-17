@@ -15,3 +15,5 @@ Revisão de conteúdos, utilização do MariaDB como banco de dados das atividad
 - [Atividade 08](https://github.com/GabryelBoeira/Espec_Java_Banco_Dados/tree/main/Atividade08) : Lidando com Transações, utilização do controle de transações com @EnableTransactionManagement para para habilitar o controle transaciona. Utilização do @Transactional na assinatura do metodo para criar cada configuração restrita ao método anotado.
 
 - [Simulado Prova](https://github.com/GabryelBoeira/Espec_Java_Banco_Dados/tree/main/SimuladoProva) : Utilizando todos os conceitos estudados nas aulas anteriores compactado em um único projeto
+
+- [Prova]() : Prova de avaliação da disciplina de Banco de Dados
