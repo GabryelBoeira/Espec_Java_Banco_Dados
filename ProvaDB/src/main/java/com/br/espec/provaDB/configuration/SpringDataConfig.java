@@ -28,6 +28,7 @@ public class SpringDataConfig {
 		ds.setUser("root");
 		ds.setPassword("root");
 		ds.setJdbcUrl("jdbc:mysql://localhost/prova_db");
+
 		return ds;
 	}
 
@@ -38,7 +39,7 @@ public class SpringDataConfig {
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setGenerateDdl(true);
-		vendorAdapter.setShowSql(false);
+		vendorAdapter.setShowSql(true);
 		
 		factory.setDataSource(dataSource());
 		factory.setJpaVendorAdapter(vendorAdapter);
@@ -57,4 +58,5 @@ public class SpringDataConfig {
 
 		return manager;
 	}
+	
 }

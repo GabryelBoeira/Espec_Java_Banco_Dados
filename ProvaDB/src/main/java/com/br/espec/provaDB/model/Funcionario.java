@@ -17,8 +17,8 @@ public class Funcionario extends AbstractPersistable<Long> {
     @Column(name = "telefone_func", nullable = false)
     private String telefone;
 
-    @ManyToOne(targetEntity = Cargo.class, optional = false)
-    @JoinColumn(name = "cargo_id")
+    @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    @JoinColumn(name = "cargo_id", nullable = false)
     private Cargo cargo;
 
     public Funcionario() {}
@@ -66,5 +66,15 @@ public class Funcionario extends AbstractPersistable<Long> {
 
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario {" +
+                "nome='" + nome + '\'' +
+                ", sexo=" + sexo +
+                ", telefone='" + telefone + '\'' +
+                ", cargo=[" + (cargo.getId() == null ? false : " ID=" + cargo.getId() +  ", cargo="+ cargo.getCargo()) + "]" +
+                '}';
     }
 }
