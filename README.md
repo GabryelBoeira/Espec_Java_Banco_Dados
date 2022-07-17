@@ -17,3 +17,5 @@ Revisão de conteúdos, utilização do MariaDB como banco de dados das atividad
 - [Simulado Prova](https://github.com/GabryelBoeira/Espec_Java_Banco_Dados/tree/main/SimuladoProva) : Utilizando todos os conceitos estudados nas aulas anteriores compactado em um único projeto
 
 - [Prova](https://github.com/GabryelBoeira/Espec_Java_Banco_Dados/tree/main/ProvaBD) : Prova de avaliação da disciplina de Banco de Dados
+
+\*\* Esta é uma Disciplina Concluida \*\*
